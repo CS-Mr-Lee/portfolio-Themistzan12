@@ -9,7 +9,8 @@ static UserDetail[] UserInfo;
     public static void main(String[] args) 
     {
        Scanner scan = new Scanner(System.in);
-        
+       // Userno = 0 as the deafault value in the banl, it also means the maximum amount of users that can be in the bank.
+       // The no_of_users is how many users are going to be in the bank = 1 by default. 
        int Userno = 0,choice = 1;
          int no_of_users = 1; 
         System.out.println("________________________________________");
@@ -24,6 +25,8 @@ static UserDetail[] UserInfo;
             choice = Message();
             switch(choice)
             {
+                // if the maximum number of users == the number of users currently in the bank then print You can't add more users.
+                // Otherwise it will go into the AddData method and execute that code.  
                 case 1:
                     if (Userno == no_of_users) 
                     {
@@ -35,10 +38,11 @@ static UserDetail[] UserInfo;
                     Userno++;
                     }  
                     break;
-                
+               // This will be displaying all the data that we have chosen 
                 case 2:
                     DisplayData(Userno);
                 break;
+                // This will go into the withdraw method and execute the calculation from there.
                 case 3:
                     Withdraw(Userno);
                 break;
@@ -65,6 +69,7 @@ static UserDetail[] UserInfo;
     }
     public static int Message()
     {   
+     // This method will run after you choose the number of max users in the bank.
         Scanner scan = new Scanner(System.in);
         int choice = 0;
         System.out.println("\n________________________________________");
@@ -104,7 +109,7 @@ static UserDetail[] UserInfo;
             
             UserInfo[Userno] = new UserDetail();
             UserInfo[Userno].setData(name, contact,accountnumber,accounttype);
-     
+            // This will be saving the information that we will need later.
             UserInfo[Userno].SaveBalance(balance,1);
             System.out.println("******************************");
             System.out.println("| User added successfully ! |");
@@ -113,6 +118,7 @@ static UserDetail[] UserInfo;
     }
     public static void CashDeposit(int Userno)
     {
+    // if there is no user in the bank then it will print this.
         Scanner scan = new Scanner(System.in);
         if (Userno == 0) 
         {
@@ -124,7 +130,7 @@ static UserDetail[] UserInfo;
             System.out.print("Enter Account number: ");
             accountnumber = scan.next();
             System.out.println("");
-            int userid = FindUser(Userno,accountnumber);
+            int userid = FindUser(Userno,accountnumber); // This will go into the Find user method nd execute the code to verify the code.
             if (userid != -1) 
             {
                 System.out.print("Enter ammount to deposit: ");
@@ -150,7 +156,7 @@ static UserDetail[] UserInfo;
         {
             for (int i = 0; i < Userno; i++) 
             {
-                UserInfo[i].Display(i+1);
+                UserInfo[i].Display(i+1); // This will be going the the UserDeatail class and execute the Display method there.
             }
         }
     }
@@ -173,7 +179,7 @@ static UserDetail[] UserInfo;
                     long  withdrawAmmount;
                     System.out.print("Enter withdrawl ammount: ");
                     withdrawAmmount = scan.nextLong();
-                    UserInfo[userid].Withdraw(withdrawAmmount);
+                    UserInfo[userid].Withdraw(withdrawAmmount); // going into the userdetail class to execute the code, this also has a limit which is in the CurrentAccount and Saving Account classes.
             }
              else
            {
@@ -195,19 +201,19 @@ static UserDetail[] UserInfo;
             System.out.print("Enter Account number: ");
             accountnumber = scan.next();
             System.out.println("");
-            int userid = FindUser(Userno,accountnumber);
-            if (userid != -1) 
+            int userid = FindUser(Userno,accountnumber); // This will go into the Finduser method to be executed.
+            if (userid != -1) // if the user id is not = -1 then execute the code below.
             {
                 if (UserInfo[userid].loan == 0) 
                 {
                     long  LoanAmmount;
                     System.out.print("Enter loan ammount: ");
                     LoanAmmount = scan.nextLong();
-                    UserInfo[userid].GetLoan(LoanAmmount);
+                    UserInfo[userid].GetLoan(LoanAmmount); // going into the getloan method in UserDeaail class to be executed.
                 }
                 else
                 {
-                    System.out.println("You can't get more loan, Return previous loan first");
+                    System.out.println("You can't get more loan, Return previous loan first"); // This will happen if you have not yet returned yor prevoius loan.
                 }
                     
             }
@@ -236,7 +242,7 @@ static UserDetail[] UserInfo;
                     long  LoanAmmount;
                     System.out.print("Enter loan return ammount: ");
                     LoanAmmount = scan.nextLong();
-                    UserInfo[userid].ReturnLoan(LoanAmmount);
+                    UserInfo[userid].ReturnLoan(LoanAmmount); // This will be going into the return loan method
             }
              else
             {
@@ -249,7 +255,7 @@ static UserDetail[] UserInfo;
         for (int i = 0; i < Userno; i++) 
             
             {
-                if (UserInfo[i].AccountNumber.equals(accountnumber)) 
+                if (UserInfo[i].AccountNumber.equals(accountnumber)) // This is to verify if the Account number is = to the Account number that  is entred. 
                 {
                     return i;
   
@@ -274,14 +280,14 @@ static UserDetail[] UserInfo;
          try 
         {
            
-        FileWriter filewriter = new FileWriter("C:\\Users\\Admin\\Desktop\\ZainProject\\BankingSystem\\src\\bankingsystem\\UserDetail.txt");   
+        FileWriter filewriter = new FileWriter("C:\\Users\\Admin\\Desktop\\ZainProject\\BankingSystem\\src\\bankingsystem\\UserDetail.txt"); // This is the link to the file that will be saving the data.  
         filewriter.write(Alldata);
         filewriter.close();
             System.out.println("All Data saved");
         }
         catch(Exception e)
         {
-            System.out.println("File not found");  
+            System.out.println("File not found"); // This will print if it does not find the file  
         } 
         }
     
