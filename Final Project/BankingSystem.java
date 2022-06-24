@@ -67,6 +67,11 @@ static UserDetail[] UserInfo;
         } while (choice != 7);
     
     }
+        
+    /**
+     * This will Print the the coices the user has after choosing the number of max uers in the bank.
+     * @return - choice
+     */
     public static int Message()
     {   
      // This method will run after you choose the number of max users in the bank.
@@ -87,6 +92,10 @@ static UserDetail[] UserInfo;
         
         return choice;
     }
+    /**
+     * This will allow the user to add data into the account.
+     * @param - Userno
+     */
     public static void AddData(int Userno)
     {
             Scanner scan = new Scanner(System.in);
@@ -116,6 +125,11 @@ static UserDetail[] UserInfo;
             System.out.println("******************************");
             
     }
+    /**
+     * This will allow the user to deposit cash.
+     * @param - Userno
+     */
+
     public static void CashDeposit(int Userno)
     {
     // if there is no user in the bank then it will print this.
@@ -143,6 +157,10 @@ static UserDetail[] UserInfo;
             }
         }
     }
+     /**
+     * This will print the data that was saved by the user.
+     * @param Userno
+     */
     public static void DisplayData(int Userno)
     {
         System.out.println("____________________________________________________________________________");
@@ -160,6 +178,10 @@ static UserDetail[] UserInfo;
             }
         }
     }
+    /**
+     * This will allow the user to withdraw the amount from the bank.
+     * @param Userno
+     */
     public static void Withdraw(int Userno)
     {
         Scanner scan = new Scanner(System.in);
@@ -188,6 +210,10 @@ static UserDetail[] UserInfo;
         
         }
     }
+    /**
+     * This will allow the user to get loan from the bank according the to limit.
+     * @param Userno
+     */
     public static void Getloan(int Userno)
     {
         Scanner scan = new Scanner(System.in);
@@ -223,6 +249,10 @@ static UserDetail[] UserInfo;
             }  
         }
     }
+    /**
+     * This will be asking the user to Return the loan they they took + the Interst amount due.
+     * @param Userno
+     */
     public static void Returnloan(int Userno)
     {
         Scanner scan = new Scanner(System.in);
@@ -250,6 +280,12 @@ static UserDetail[] UserInfo;
             }  
         }
     }
+    /**
+     * This is for finding the account number and checking wether it is the same as the one inputted by the user to verify it is them.
+     * @param Userno
+     * @return i
+     * @return -1 
+     */
     public static int FindUser (int Userno,String accountnumber)
     {
         for (int i = 0; i < Userno; i++) 
@@ -263,6 +299,11 @@ static UserDetail[] UserInfo;
             }
         return -1;
     }
+     /**
+     * This will Save all the data that was entered by the user and save it in a file. 
+     * @param Userno
+     */
+
     public static void SaveAllData(int Userno)
     {
         String Alldata="";
